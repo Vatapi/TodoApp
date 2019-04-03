@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>List of ToDos</title>
+  </head>
+  <body>
+    <ul>
+      {% for todo in object_list%}
+      <li>
+        <h2>Title: {{todo.title}}</h2>
+        <h3>Task: {{todo.content}}</h3>
+        <h4>Due Date: {{todo.todo_date}}</h4>
+        <p>
+          <a href="{% url "todos:update" todo.id %}">Update</a>
+          <a href="{% url "todos:delete" todo.id%}">Delete</a>
+        </p>
+      </li>
+      <br>
+      {% endfor%}
+    </ul>
+    <p>
+      "Want to create another todo??"
+      <a href="{% url "todos:create" %}"> Create</a>
+    </p>
+    <br>
+    <a href="{% url "logout" %}">LogOut</a>
+  </body>
+</html>
